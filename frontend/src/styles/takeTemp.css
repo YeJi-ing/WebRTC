@@ -1,0 +1,9 @@
+.takeTemp-component {
+    text-align: center;
+    padding: 20px;
+}
+
+.showTemp {
+    margin: 20px 0;
+    font-size: 18px;
+}

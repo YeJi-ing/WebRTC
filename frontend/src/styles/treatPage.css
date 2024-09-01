@@ -1,6 +1,7 @@
 .treatPage {
+    margin-top: 100px;
     display: flex;
-    justify-content: center; /* 좌우로 요소 배치 */
+    justify-content: center; /* 요소를 수평으로 중앙 배치 */
     gap: 2rem;
 }
 
@@ -21,7 +22,7 @@
 }
 
 .myVideo {
-    height: 40vh;
+    height: 35vh;
     width: 50vh;
 }
 
@@ -35,9 +36,26 @@ video {
 
 .buttons {
     display: flex;
-    justify-content: center; /* 좌우로 요소 배치 */
+    flex-direction: row; /* 가로로 배치 */
+    justify-content: space-between; /* 요소들 사이에 공간을 균등하게 배치 */
+    align-items: center; /* 요소들을 세로로 가운데 정렬 */
+    gap: 10px; /* 요소들 사이의 간격 */
+}
+
+.myId {
+    display: flex;
+    flex-direction: row; /* 이 부분은 필요에 따라 row로 변경 가능 */
+    align-items: flex-start; /* 자식 요소들을 왼쪽으로 정렬 */
+    gap: 10px; /* 자식 요소들 사이의 간격 */
+}
+
+.call-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     gap: 10px;
 }
+
 
 .buttons button {
     padding: 10px 20px;
@@ -47,6 +65,7 @@ video {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+    width: 100%; /* 버튼을 전체 너비로 설정 */
 }
 
 .buttons button:hover {
@@ -54,10 +73,7 @@ video {
 }
 
 .warnning-text {
-    /* 기본적으로 숨겨져 있었던 경고 텍스트를 항상 표시하도록 설정 */
     display: flex;
     color: #000;
     font-size: 2rem;
 }
-
-/* 반응형 스타일 제거 */

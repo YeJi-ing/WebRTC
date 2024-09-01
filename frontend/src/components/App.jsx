@@ -7,7 +7,17 @@ import React, { useEffect, useRef, useState } from "react"
 import { CopyToClipboard } from "react-copy-to-clipboard"
 import Peer from "simple-peer"
 import io from "socket.io-client"
-import "../styles/App.css"
+import TakeTemp from './TakeTemp';
+import "../styles/treatPage.css"
+import styled from 'styled-components';
+import oppDelayImg from '../images/oppDelayImg.png';
+import myDelayImg from '../images/myDelayImg.png';
+import Navbar from "./Navbar"
+
+const StyledTakeTemp = styled(TakeTemp)`
+    height: 30vh;
+    width: 50vh;
+`;
 
 const socket = io.connect('http://localhost:5000')
 function App() {
@@ -23,6 +33,13 @@ function App() {
 	const myVideo = useRef()
 	const userVideo = useRef()
 	const connectionRef= useRef()
+
+	const [paddingTop, setPaddingTop] = useState(0);
+
+  	// Callback function to receive the height of the navbar
+  	const handleNavbarHeightChange = (height) => {
+    	setPaddingTop(height);
+  	};
 
 	useEffect(() => {
 		navigator.mediaDevices.getUserMedia({ video: true, audio: true }).then((stream) => {
@@ -93,29 +110,23 @@ function App() {
 	}
 
 	return (
-		<>
-			<h1 style={{ textAlign: "center", color: '#fff' }}>Zoomish</h1>
-		<div className="container">
-			<div className="video-container">
-				<div className="video">
-					{stream &&  <video playsInline muted ref={myVideo} autoPlay style={{ width: "300px" }} />}
-				</div>
-				<div className="video">
-					{callAccepted && !callEnded ?
-					<video playsInline ref={userVideo} autoPlay style={{ width: "300px"}} />:
-					null}
-				</div>
-			</div>
-			<div className="myId">
+		<div className="App">
+			<Navbar onHeightChange={handleNavbarHeightChange} />
+		<div className="treatPage" paddingTop={paddingTop}>
+          <div className='leftSide'>
+                <video className='oppVideo' playsInline ref={userVideo} autoPlay
+                       poster={oppDelayImg} />
+				<div className="buttons">
+				<div className="myId">
 				<TextField
 					id="filled-basic"
 					label="Name"
 					variant="filled"
 					value={name}
 					onChange={(e) => setName(e.target.value)}
-					style={{ marginBottom: "20px" }}
+					style={{ marginBottom: "20px", width: "20%"}}
 				/>
-				<CopyToClipboard text={me} style={{ marginBottom: "2rem" }}>
+				<CopyToClipboard text={me} style={{ marginBottom: "2rem", width: "20%" }}>
 					<Button variant="contained" color="primary" startIcon={<AssignmentIcon fontSize="large" />}>
 						Copy ID
 					</Button>
@@ -127,14 +138,15 @@ function App() {
 					variant="filled"
 					value={idToCall}
 					onChange={(e) => setIdToCall(e.target.value)}
+					style={{ marginBottom: "20px", width: "20%"}}
 				/>
 				<div className="call-button">
 					{callAccepted && !callEnded ? (
-						<Button variant="contained" color="secondary" onClick={leaveCall}>
+						<Button variant="contained" color="secondary" onClick={leaveCall} style={{ marginBottom: "2rem", width: "20%" }}>
 							End Call
 						</Button>
 					) : (
-						<IconButton color="primary" aria-label="call" onClick={() => callUser(idToCall)}>
+						<IconButton color="primary" aria-label="call" onClick={() => callUser(idToCall)} >
 							<PhoneIcon fontSize="large" />
 						</IconButton>
 					)}
@@ -151,8 +163,16 @@ function App() {
 					</div>
 				) : null}
 			</div>
+                </div>
+            </div>
+			
+            <div className='rightSide'>
+                <StyledTakeTemp />
+                <video className='myVideo' playsInline muted ref={myVideo} autoPlay
+                       poster={myDelayImg} />
+            </div>
+        </div>
 		</div>
-		</>
 	)
 }
 
