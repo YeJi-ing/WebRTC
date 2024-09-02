@@ -1,3 +1,4 @@
+
 .treatPage {
     margin-top: 100px;
     display: flex;
@@ -36,15 +37,15 @@ video {
 
 .buttons {
     display: flex;
-    flex-direction: row; /* 가로로 배치 */
-    justify-content: space-between; /* 요소들 사이에 공간을 균등하게 배치 */
+    flex-direction: column; /* 가로로 배치 */
     align-items: center; /* 요소들을 세로로 가운데 정렬 */
+    justify-content: center; /* 요소를 수평으로 중앙 배치 */
     gap: 10px; /* 요소들 사이의 간격 */
 }
 
 .myId {
     display: flex;
-    flex-direction: row; /* 이 부분은 필요에 따라 row로 변경 가능 */
+    flex-direction: column; /* 이 부분은 필요에 따라 row로 변경 가능 */
     align-items: flex-start; /* 자식 요소들을 왼쪽으로 정렬 */
     gap: 10px; /* 자식 요소들 사이의 간격 */
 }
@@ -54,6 +55,7 @@ video {
     flex-direction: row;
     align-items: center;
     gap: 10px;
+    width: 100%;
 }
 
 

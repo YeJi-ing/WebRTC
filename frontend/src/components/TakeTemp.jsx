@@ -46,7 +46,7 @@ const TakeTemp = ({ className }) => {
         <>
           <div className='showTemp'>
             {temperature !== null ? (
-              <div>촬영된 체온: {temperature}°C</div>
+              <div>촬영된 체온: {temperature+3.9}°C</div>
             ) : (
               <div>촬영 대기 중...</div>
             )}
