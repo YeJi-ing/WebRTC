@@ -3,6 +3,7 @@
 	"version": "0.1.0",
 	"private": true,
 	"proxy": "http://localhost:5000",
+	"_proxy": "There is REACT_APP_PROXY_URL for setting the proxy",
 	"dependencies": {
 		"@material-ui/core": "^4.11.3",
 		"@material-ui/icons": "^4.11.2",
@@ -28,7 +29,6 @@
 		"test": "react-scripts test",
 		"eject": "react-scripts eject"
 	},
-	"proxy": "http://ec2-52-78-187-152.ap-northeast-2.compute.amazonaws.com:8080",
 	"eslintConfig": {
 		"extends": [
 			"react-app",
